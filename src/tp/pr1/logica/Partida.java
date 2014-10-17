@@ -18,7 +18,27 @@ public class Partida {
     }
     public boolean ejecutaMovimiento(Ficha color, int col)
     {
-        return false;
+        if(!(tablero.getCasilla(col, 1).equals(Ficha.VACIA)))
+        {
+            return false;
+        }
+        else
+        {
+            int i=2;
+            boolean stop=false;
+            while(i<=ALTO && !stop)
+            {
+                if(tablero.getCasilla(col, i).equals(Ficha.VACIA))
+                i++;
+                else
+                {
+                    stop=true;
+                }
+            }
+            tablero.setCasilla(col, i-1, color);
+            turno=turno.contrario();
+            return true;
+        }
     }
     public Ficha getGanador()
     {

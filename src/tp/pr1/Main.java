@@ -13,8 +13,9 @@ import tp.pr1.logica.*;
 public class Main {
     public static void main(String [] arg)
     {
-        Tablero board=new Tablero(8, 8);
-        board.setCasilla(3, 1, Ficha.BLANCA);
+        Partida game=new Partida();
+        Tablero board=game.getTablero();
+        while(game.ejecutaMovimiento(Ficha.NEGRA, 2))
         System.out.print(board.toString());
     }
 }
