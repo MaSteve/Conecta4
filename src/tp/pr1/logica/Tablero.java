@@ -21,10 +21,10 @@ public class Tablero {
     {
         //TODO
         String board="";
-        for(int i=alto-1; i>=0; i--)
+        for(int i=1; i<=alto; i++)
         {
             board+="|";
-            for(int j=0; j<ancho; j++)
+            for(int j=1; j<=ancho; j++)
             {
                 Ficha color=getCasilla(j, i);
                 if(color==Ficha.BLANCA)board+="O";
@@ -56,11 +56,11 @@ public class Tablero {
     }
     public Ficha getCasilla(int x, int y)
     {
-        return tablero[x][y];
+        return tablero[x-1][y-1]; //Por Stalin
     }
     public void setCasilla(int x, int y, Ficha color)
     {
-        tablero[x][y]=color;
+        tablero[x-1][y-1]=color; //Por Stalin
     }
     private Ficha [ ][ ] tablero;
     private int ancho;

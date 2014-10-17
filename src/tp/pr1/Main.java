@@ -14,7 +14,7 @@ public class Main {
     public static void main(String [] arg)
     {
         Tablero board=new Tablero(8, 8);
-        board.setCasilla(3, 0, Ficha.BLANCA);
+        board.setCasilla(3, 1, Ficha.BLANCA);
         System.out.print(board.toString());
     }
 }
