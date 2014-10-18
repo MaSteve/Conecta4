@@ -55,30 +55,37 @@ public class Partida {
     }
     public boolean isTerminada()
     {
-        boolean end=false;
         boolean stop=false;
         Ficha color=tablero.getCasilla(lastx, lasty);
         ////EJE X
         int x=lastx+1, y=lasty, cont=1;
-        while(!end && !stop && x<=ANCHO)
+        while(!stop && x<=ANCHO)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x++;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
         x=lastx-1;
         stop=false;
-        while(!end && !stop && x>=1)
+        while(!stop && x>=1)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x--;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
@@ -87,13 +94,17 @@ public class Partida {
         y=lasty+1;
         cont=1;
         stop=false;
-        while(!end && !stop && y<=ALTO)
+        while(!stop && y<=ALTO)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 y++;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
@@ -102,28 +113,36 @@ public class Partida {
         y=lasty+1;
         cont=1;
         stop=false;
-        while(!end && !stop && x<=ANCHO && y<=ALTO)
+        while(!stop && x<=ANCHO && y<=ALTO)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x++;
                 y++;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
         x=lastx-1;
         y=lasty-1;
         stop=false;
-        while(!end && !stop && x>=1 && y>=1)
+        while(!stop && x>=1 && y>=1)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x--;
                 y--;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
@@ -132,42 +151,46 @@ public class Partida {
         y=lasty-1;
         cont=1;
         stop=false;
-        while(!end && !stop && x<=ANCHO && y>=1)
+        while(!stop && x<=ANCHO && y>=1)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x++;
                 y--;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
         x=lastx-1;
         y=lasty+1;
         stop=false;
-        while(!end && !stop && x>=1 && y<=ALTO)
+        while(!stop && x>=1 && y<=ALTO)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
                 x--;
                 y++;
                 cont++;
-                end=(cont==4);
+                if(cont==4)
+                {
+                    ganador=turno;
+                    return true;
+                }
             }
             else stop=true;
         }
         ////
-        
-        if(!end)
+        boolean end=true;
+        int i=1; 
+        while(end && i<=ANCHO)
         {
-            end=true;
-            int i=1; 
-            while(end && i<=ANCHO)
-            {
-                end=!tablero.getCasilla(i, 1).equals(Ficha.VACIA);
-                i++;
-            }
+            end=!tablero.getCasilla(i, 1).equals(Ficha.VACIA);
+            i++;
         }
         return end;
     }
