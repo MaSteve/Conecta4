@@ -19,6 +19,7 @@ public class Partida {
     }
     public boolean ejecutaMovimiento(Ficha color, int col)
     {
+        if(col<=0||col>ANCHO)return false;
         if(!(tablero.getCasilla(col, 1).equals(Ficha.VACIA))||
                 !color.equals(turno)||terminada)
         {
@@ -59,6 +60,7 @@ public class Partida {
     }
     public boolean isTerminada()
     {
+        if(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)return false;
         boolean stop=false;
         Ficha color=tablero.getCasilla(lastx, lasty);
         ////EJE X
@@ -200,6 +202,8 @@ public class Partida {
     }
     public final void reset() //???
     {
+        lastx=0;
+        lasty=0;
         tablero=new Tablero(ANCHO, ALTO);
         stack=new CircularUnsignedIntStack();
         turno=Ficha.BLANCA;
@@ -237,6 +241,6 @@ public class Partida {
     private Ficha turno; 
     private boolean terminada; 
     private Ficha ganador;
-    private static final int ANCHO=8;
-    private static final int ALTO=8;
+    private static final int ANCHO=7;
+    private static final int ALTO=6;
 }

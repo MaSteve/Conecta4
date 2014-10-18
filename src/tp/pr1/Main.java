@@ -5,6 +5,8 @@
  */
 
 package tp.pr1;
+import java.util.Scanner;
+import tp.pr1.control.*;
 import tp.pr1.logica.*;
 /**
  *
@@ -13,7 +15,7 @@ import tp.pr1.logica.*;
 public class Main {
     public static void main(String [] arg)
     {
-        Ficha color=Ficha.BLANCA;
+        /*Ficha color=Ficha.BLANCA;
         Partida game=new Partida();
         Tablero board=game.getTablero();
         System.out.print(board.toString());
@@ -21,6 +23,10 @@ public class Main {
         {
             color=color.contrario();
             System.out.print(board.toString());
-        }
+        }*/
+        Partida game=new Partida();
+        Scanner input=new Scanner(System.in);
+        Controlador control=new Controlador(game, input);
+        control.run();
     }
 }

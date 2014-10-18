@@ -22,12 +22,13 @@ public class Controlador {
     }
     public void run()
     {
+        Ficha color;
         boolean stop=false;
         System.out.print(partida.getTablero().toString()+"\n");
         while(!stop && !partida.isTerminada())
         {
             System.out.print("Juegan ");
-            Ficha color=partida.getTurno();
+            color=partida.getTurno();
             switch(color)
             {
                 case BLANCA:System.out.print("blancas"+"\n");break;
@@ -40,7 +41,8 @@ public class Controlador {
                 case "poner":
                 {
                     System.out.print("Introduce la columna: ");
-                    int col=input.nextInt();
+                    comando=input.nextLine();
+                    int col=Integer.parseInt(comando);
                     if(!partida.ejecutaMovimiento(color, col))
                     {
                         System.out.println("Movimiento incorrecto");
@@ -61,6 +63,16 @@ public class Controlador {
                 }
             } 
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
+        }
+        if(!stop)
+        {
+            color=partida.getGanador();
+            switch(color)
+            {
+                case BLANCA:System.out.println("Ganan las blancas");break;
+                case NEGRA:System.out.println("Ganan las negras");break;
+                default:System.out.println("Partida terminada en tablas.");
+            }
         }
         
     }
