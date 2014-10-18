@@ -6,19 +6,27 @@
 
 package tp.pr1;
 import java.util.Scanner;
-
-import tp.pr1.control.Controlador;
+import tp.pr1.control.*;
 import tp.pr1.logica.*;
 /**
  *
  * @author marcoantonio
- * @author ivan
  */
 public class Main {
     public static void main(String [] arg)
     {
-    	Partida p = new Partida();
-        Controlador cont = new Controlador(p, new Scanner(System.in));
-        cont.run();
+        /*Ficha color=Ficha.BLANCA;
+        Partida game=new Partida();
+        Tablero board=game.getTablero();
+        System.out.print(board.toString());
+        while(game.ejecutaMovimiento(color, 2))
+        {
+            color=color.contrario();
+            System.out.print(board.toString());
+        }*/
+        Partida game=new Partida();
+        Scanner input=new Scanner(System.in);
+        Controlador control=new Controlador(game, input);
+        control.run();
     }
 }

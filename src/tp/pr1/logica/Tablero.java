@@ -16,11 +16,9 @@ public class Tablero {
         ancho=tx;
         alto=ty;
         tablero=new Ficha[tx][ty];
-        // Steve eres un piernas
-        for (int i = 0; i < tx; i++)
-        	for (int j = 0; j < ty; j++)
-        		tablero[i][j] = Ficha.VACIA;
-        
+        for(int i=0; i<tx; i++)
+            for(int j=0; j<ty;j++)
+                this.setCasilla(i+1, j+1, Ficha.VACIA);
     }
     public String toString()
     {
@@ -32,8 +30,8 @@ public class Tablero {
             for(int j=1; j<=ancho; j++)
             {
                 Ficha color=getCasilla(j, i);
-                if(color==Ficha.BLANCA)board+="O";
-                else if(color==Ficha.NEGRA) board+="X";
+                if(color.equals(Ficha.BLANCA))board+="O";
+                else if(color.equals(Ficha.NEGRA)) board+="X";
                 else board+=" ";
             }
             board+="|"+"\n";
