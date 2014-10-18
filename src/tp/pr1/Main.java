@@ -5,16 +5,20 @@
  */
 
 package tp.pr1;
+import java.util.Scanner;
+
+import tp.pr1.control.Controlador;
 import tp.pr1.logica.*;
 /**
  *
  * @author marcoantonio
+ * @author ivan
  */
 public class Main {
     public static void main(String [] arg)
     {
-        Tablero board=new Tablero(8, 8);
-        board.setCasilla(3, 1, Ficha.BLANCA);
-        System.out.print(board.toString());
+    	Partida p = new Partida();
+        Controlador cont = new Controlador(p, new Scanner(System.in));
+        cont.run();
     }
 }

@@ -36,7 +36,7 @@ public class Partida {
 	}
 
 	public boolean isTerminada() {
-		return ganador == Ficha.VACIA? false: true;
+		return (ganador == Ficha.VACIA)? false: true;
 	}
 
 	public boolean undo() {
@@ -52,13 +52,17 @@ public class Partida {
 
 	public boolean ejecutaMovimiento(Ficha color, int col) {
 		if (color != turno)	return false;
-		if (tablero.getCasilla(col, 1) == Ficha.VACIA ) return false;
+		if (tablero.getCasilla(col, 1) != Ficha.VACIA ) return false;
 		// Todo correcto
 		ponerFicha(col);
 		// Comprobar efecto de este movimiento
 		if (principalDiagonal(col) || secoundaryDiagonal(col) || horizontal(col) || vertical(col))
 			ganador = turno.contrario();
 		return true;
+	}
+	
+	public Ficha getTurno() {
+		return turno;
 	}
 	
 	private boolean principalDiagonal(int col) {
@@ -95,7 +99,7 @@ public class Partida {
 			Ficha ficha = tablero.getCasilla(col, i);
 			int countLeft = 0, countRight = 0;
 			while (i - 1 - countLeft >= 1 && tablero.getCasilla(col, i - 1 - countLeft) == ficha) countLeft++;
-			while (i + 1 + countRight <= tablero.getAncho() && tablero.getCasilla(col, i + 1 + countRight) == ficha) countRight++;
+			while (i + 1 + countRight <= tablero.getAlto() && tablero.getCasilla(col, i + 1 + countRight) == ficha) countRight++;
 			if (countLeft + 1 + countRight >= 4) return true;
 		}
 		return false;
