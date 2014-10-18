@@ -16,6 +16,11 @@ public class Tablero {
         ancho=tx;
         alto=ty;
         tablero=new Ficha[tx][ty];
+        // Steve eres un piernas
+        for (int i = 0; i < tx; i++)
+        	for (int j = 0; j < ty; j++)
+        		tablero[i][j] = Ficha.VACIA;
+        
     }
     public String toString()
     {
