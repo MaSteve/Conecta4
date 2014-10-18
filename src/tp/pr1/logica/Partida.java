@@ -73,7 +73,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -89,7 +89,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -108,7 +108,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -128,7 +128,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -146,7 +146,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -166,7 +166,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -184,7 +184,7 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    ganador=turno;
+                    ganador=turno.contrario();
                     return true;
                 }
             }
@@ -227,8 +227,10 @@ public class Partida {
                     stop=true;
                 }
             }
-            tablero.setCasilla(col, i-1, Ficha.VACIA);
+            tablero.setCasilla(col, i, Ficha.VACIA);
             turno=turno.contrario();
+            lastx=0;
+            lasty=0; //Ñapa para que funciones isTerminada() XD
             return true;
         }
     }
