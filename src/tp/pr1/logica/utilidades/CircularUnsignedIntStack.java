@@ -27,6 +27,10 @@ public class CircularUnsignedIntStack {
     {
         return 0;
     }
+    public int peek()
+    {
+        return 0;
+    }
     public void clear()
     {
         

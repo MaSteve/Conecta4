@@ -13,9 +13,13 @@ import tp.pr1.logica.*;
 public class Main {
     public static void main(String [] arg)
     {
+        Ficha color=Ficha.BLANCA;
         Partida game=new Partida();
         Tablero board=game.getTablero();
-        while(game.ejecutaMovimiento(Ficha.NEGRA, 2))
+        while(game.ejecutaMovimiento(color, 2))
+        {
+            color=color.contrario();
+        }
         System.out.print(board.toString());
     }
 }
