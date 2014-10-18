@@ -53,6 +53,10 @@ public class Partida {
     {
         return tablero;
     }
+    public Ficha getTurno()
+    {
+        return turno;
+    }
     public boolean isTerminada()
     {
         boolean stop=false;

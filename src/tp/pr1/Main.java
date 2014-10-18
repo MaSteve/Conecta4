@@ -16,10 +16,11 @@ public class Main {
         Ficha color=Ficha.BLANCA;
         Partida game=new Partida();
         Tablero board=game.getTablero();
+        System.out.print(board.toString());
         while(game.ejecutaMovimiento(color, 2))
         {
             color=color.contrario();
+            System.out.print(board.toString());
         }
-        System.out.print(board.toString());
     }
 }
