@@ -13,6 +13,7 @@ package tp.pr1.logica.utilidades;
 public class CircularUnsignedIntStack {
 	public CircularUnsignedIntStack() {
 		gonda = new int[10];
+                bot = top = 0;//Iván la vas a cagar
 	}	
 	
 	public CircularUnsignedIntStack(int size) {
@@ -25,7 +26,7 @@ public class CircularUnsignedIntStack {
 		else			return top - bot;
 	}
 
-	public void push(int val) {
+	public void push(int val) { //Culo incluido cabeza sin incluir?
 		top = inc(top);
 		if (top == bot) bot = inc(bot);
 		gonda[top] = val;
@@ -34,15 +35,16 @@ public class CircularUnsignedIntStack {
 	public int pop() {
 		if (bot == top) return -1;
 		else {
+                        int auxi=top;
 			top = dec(top);
-			return gonda[inc(top)];
+			return gonda[auxi];
 		}
 	}
 
 	public void clear() {
 		int size = gonda.length;
-		if (size < 1)
-			size = 10;
+		/*if (size < 1) EN QUE COJONES PENSABAS CON ESTO?
+			size = 10;*/
 		gonda = new int[size];
 		bot = top = 0;
 	}
@@ -55,7 +57,9 @@ public class CircularUnsignedIntStack {
 	
 	private int dec(int n) {
 		int size = gonda.length;
-		return (n-1)%size;
+                if(n==0)return size-1;
+		else
+                    return (n-1); //Tengo mis dudas ESTO ERA UNA MIERDA
 	}
 	
 	private int gonda[];

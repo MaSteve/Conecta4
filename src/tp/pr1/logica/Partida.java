@@ -213,7 +213,7 @@ public class Partida {
     public boolean undo()
     {
         int col=stack.pop();
-        if(col<=1||col>ANCHO) return false;
+        if(col<1||col>ANCHO) return false;
         else
         {
             int i=1;
@@ -230,7 +230,7 @@ public class Partida {
             tablero.setCasilla(col, i, Ficha.VACIA);
             turno=turno.contrario();
             lastx=0;
-            lasty=0; //Ñapa para que funciones isTerminada() XD
+            lasty=0; //Ñapa para que funcione isTerminada() XD
             return true;
         }
     }
