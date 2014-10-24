@@ -40,8 +40,8 @@ public class Controlador {
             {
                 case "poner":
                 {
-                    System.out.print("Introduce la columna: ");
-                    comando=input.nextLine();
+                    System.out.print("Introduce la columna: ");//Vamos a fiarnos del usuario
+                    comando=input.nextLine();//No podemos usar try catch
                     int col=Integer.parseInt(comando);
                     if(!partida.ejecutaMovimiento(color, col))
                     {
@@ -60,7 +60,8 @@ public class Controlador {
                 case "salir":
                 {
                     stop=true;
-                }
+                }break;
+                default: System.out.println("No te entiendo.");
             } 
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
         }
