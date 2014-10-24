@@ -58,6 +58,47 @@ public class Partida {
     {
         return turno;
     }
+    public boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry)
+    {
+        int x=posx+incrx;
+        int y=posy+incry;
+        int cont=1;
+        boolean stop=false;
+        while(!stop && x<=ANCHO && y<=ALTO)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x=x+incrx;
+                y=y+incry;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        x=posx-incrx;
+        y=posy-incry;
+        stop=false;
+        while(!stop && x>=1 && y>=1)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x=x-incrx;
+                y=y-incry;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        return false;
+    }
     public boolean isTerminada()
     {
         if(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)return false;
