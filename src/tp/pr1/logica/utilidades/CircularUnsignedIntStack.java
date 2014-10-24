@@ -32,7 +32,11 @@ public class CircularUnsignedIntStack {
 		top = inc(top);
 		if (top == bot) bot = inc(bot);
 		gonda[top] = val;
-                if(empty)empty=false;
+                if(empty)
+                {
+                    empty=false;
+                    bot = inc(bot);
+                }
 	}
 
 	public int pop() {

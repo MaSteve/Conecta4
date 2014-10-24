@@ -227,11 +227,13 @@ public class Partida {
                     stop=true;
                 }
             }
+            if(stop){
             tablero.setCasilla(col, i, Ficha.VACIA);
             turno=turno.contrario();
             lastx=0;
             lasty=0; //Ñapa para que funcione isTerminada() XD
-            return true;
+            return true;}
+            else return false;//Otra ñapa de mierda
         }
     }
     
