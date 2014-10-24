@@ -13,11 +13,13 @@ package tp.pr1.logica.utilidades;
 public class CircularUnsignedIntStack {
 	public CircularUnsignedIntStack() {
 		gonda = new int[10];
+                empty=true;
                 bot = top = 0;//Iván la vas a cagar
 	}	
 	
 	public CircularUnsignedIntStack(int size) {
 		gonda = new int[size];
+                empty=true;
 		bot = top = 0;
 	}
 
@@ -30,10 +32,16 @@ public class CircularUnsignedIntStack {
 		top = inc(top);
 		if (top == bot) bot = inc(bot);
 		gonda[top] = val;
+                if(empty)empty=false;
 	}
 
 	public int pop() {
-		if (bot == top) return -1;
+                if(empty)return -1;
+                else if (bot == top) 
+                {
+                    empty=true;
+                    return gonda[top];
+                }
 		else {
                         int auxi=top;
 			top = dec(top);
@@ -46,6 +54,7 @@ public class CircularUnsignedIntStack {
 		/*if (size < 1) EN QUE COJONES PENSABAS CON ESTO?
 			size = 10;*/
 		gonda = new int[size];
+                empty=true;
 		bot = top = 0;
 	}
 	
@@ -64,4 +73,5 @@ public class CircularUnsignedIntStack {
 	
 	private int gonda[];
 	private int bot, top;
+        private boolean empty;
 }
