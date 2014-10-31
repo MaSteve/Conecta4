@@ -45,12 +45,12 @@ public class Controlador {
                     int col=Integer.parseInt(comando);
                     if(!partida.ejecutaMovimiento(color, col))
                     {
-                        System.out.println("Movimiento incorrecto");
+                        System.err.println("Movimiento incorrecto");
                     }
                 }break;
                 case "deshacer":
                 {
-                    if(!partida.undo())System.out.println("Imposible deshacer");
+                    if(!partida.undo())System.err.println("Imposible deshacer");
                 }break;
                 case "reiniciar":
                 {
@@ -61,7 +61,7 @@ public class Controlador {
                 {
                     stop=true;
                 }break;
-                default: System.out.println("No te entiendo.");
+                default: System.err.println("No te entiendo.");
             } 
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
         }
