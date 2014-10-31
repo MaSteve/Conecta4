@@ -13,11 +13,19 @@ package tp.pr1.logica;
 public class Tablero {
     public Tablero(int tx, int ty)
     {
-        ancho=tx;
-        alto=ty;
-        tablero=new Ficha[tx][ty];
-        for(int i=0; i<tx; i++)
-            for(int j=0; j<ty;j++)
+        if(tx<1 || ty<1)
+        {
+            ancho=1;
+            alto=1;
+        }
+        else
+        {
+            ancho=tx;
+            alto=ty;
+        }
+        tablero=new Ficha[ancho][alto];
+        for(int i=0; i<ancho; i++)
+            for(int j=0; j<alto;j++)
                 this.setCasilla(i+1, j+1, Ficha.VACIA);
     }
     public String toString()
@@ -59,7 +67,8 @@ public class Tablero {
     }
     public Ficha getCasilla(int x, int y)
     {
-        return tablero[x-1][y-1]; //Por Stalin
+        if(x<1||y<1||x>ancho||y>ancho) return Ficha.VACIA;
+        else return tablero[x-1][y-1]; //Por Stalin
     }
     public void setCasilla(int x, int y, Ficha color)
     {
