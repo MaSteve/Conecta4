@@ -115,6 +115,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -131,6 +132,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -150,6 +152,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -170,6 +173,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -188,6 +192,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -208,6 +213,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -226,6 +232,7 @@ public class Partida {
                 if(cont==4)
                 {
                     ganador=turno.contrario();
+                    terminada=true;
                     return true;
                 }
             }
@@ -239,6 +246,7 @@ public class Partida {
             end=!tablero.getCasilla(i, 1).equals(Ficha.VACIA);
             i++;
         }
+        terminada=end;
         return end;
     }
     public final void reset() //???
