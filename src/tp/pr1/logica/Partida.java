@@ -102,6 +102,7 @@ public class Partida {
         boolean stop=false;
         Ficha color=tablero.getCasilla(lastx, lasty);
         ////EJE X
+        //cuatroEnRaya(color, lastx, lasty, 1, 0);
         int x=lastx+1, y=lasty, cont=1;
         while(!stop && x<=ANCHO)
         {
@@ -136,6 +137,7 @@ public class Partida {
             else stop=true;
         }
         ////EJE Y
+        //cuatroEnRaya(color, lastx, lasty, 0, 1);
         x=lastx;
         y=lasty+1;
         cont=1;
@@ -156,6 +158,7 @@ public class Partida {
             else stop=true;
         }
         ////DIAGONAL 1
+        //cuatroEnRaya(color, lastx, lasty, 1, 1);
         x=lastx+1;
         y=lasty+1;
         cont=1;
@@ -195,7 +198,8 @@ public class Partida {
             }
             else stop=true;
         }
-        ////
+        ////DIAGONAL 2
+        //cuatroEnRaya(color, lastx, lasty, 1, -1);
         x=lastx+1;
         y=lasty-1;
         cont=1;
@@ -246,7 +250,7 @@ public class Partida {
         terminada=end;
         return end;
     }
-    public final void reset() //???
+    public void reset()//Es en sí el constructor de la Partida
     {
         lastx=0;
         lasty=0;

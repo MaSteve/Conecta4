@@ -27,32 +27,32 @@ public class Tablero {
     }
     public String toString()
     {
-        //TODO
-        String board="";
+        StringBuilder board=new StringBuilder();
+        board.append("");
         for(int i=1; i<=alto; i++)
         {
-            board+="|";
+            board.append("|");
             for(int j=1; j<=ancho; j++)
             {
                 Ficha color=getCasilla(j, i);
-                if(color.equals(Ficha.BLANCA))board+="O";
-                else if(color.equals(Ficha.NEGRA)) board+="X";
-                else board+=" ";
+                if(color.equals(Ficha.BLANCA))board.append("O");
+                else if(color.equals(Ficha.NEGRA)) board.append("X");
+                else board.append(" ");
             }
-            board+="|"+"\n";
+            board.append("|"+"\n");
         }
-        board+="+";
+        board.append("+");
         for(int i=0; i<ancho; i++)
         {
-            board+="-";
+            board.append("-");
         }
-        board+="+"+"\n"+" ";
+        board.append("+"+"\n"+" ");
         for(int i=0; i<ancho; i++)
         {
-            board+=""+(i+1);
+            board.append(""+(i+1));
         }
-        board+="\n";
-        return board;
+        board.append("\n");
+        return board.toString();
     }
     public int getAlto()
     {
