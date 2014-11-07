@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package tp.pr1.logica;
 
 /**
@@ -11,6 +5,9 @@ package tp.pr1.logica;
  * @author marcoantonio
  */
 public class Tablero {
+    /*
+     * Clase Tablero. Contiene las fichas de la partida 
+     */
     public Tablero(int tx, int ty)
     {
         if(tx<1 || ty<1)
@@ -68,11 +65,11 @@ public class Tablero {
     public Ficha getCasilla(int x, int y)
     {
         if(x<1||y<1||x>ancho||y>ancho) return Ficha.VACIA;
-        else return tablero[x-1][y-1]; //Por Stalin
+        else return tablero[x-1][y-1];
     }
     public void setCasilla(int x, int y, Ficha color)
     {
-        tablero[x-1][y-1]=color; //Por Stalin
+        tablero[x-1][y-1]=color;
     }
     private Ficha [ ][ ] tablero;
     private int ancho;

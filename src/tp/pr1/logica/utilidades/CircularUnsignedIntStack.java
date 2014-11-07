@@ -1,34 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package tp.pr1.logica.utilidades;
-
 /**
  *
  * @author ivan
  */
 public class CircularUnsignedIntStack {
+    /*
+     * Pila. Almacena hasta diez movimientos para la funcionalidad "deshacer".
+     * Es circular
+     */
 	public CircularUnsignedIntStack() {
 		gonda = new int[10];
                 empty=true;
-                bot = top = 0;//Iván la vas a cagar
+                bot = top = 0;//Por defecto 10 mov
 	}	
 	
 	public CircularUnsignedIntStack(int size) {
 		gonda = new int[size];
                 empty=true;
-		bot = top = 0;
+		bot = top = 0;//No se usa
 	}
 
-	public int count() {
+	public int count() {//Devuelve la cantidad de elementos que tiene la pila
 		if (bot > top)  return top + 1 + gonda.length - bot;
 		else			return top - bot;
 	}
 
-	public void push(int val) { //Culo incluido cabeza sin incluir?
+	public void push(int val) { //Añade un elemento
 		top = inc(top);
 		if (top == bot) bot = inc(bot);
 		gonda[top] = val;
@@ -39,7 +36,7 @@ public class CircularUnsignedIntStack {
                 }
 	}
 
-	public int pop() {
+	public int pop() {//Quita el último elemento y lo devuelve.
                 if(empty)return -1;
                 else if (bot == top) 
                 {
@@ -53,26 +50,24 @@ public class CircularUnsignedIntStack {
 		}
 	}
 
-	public void clear() {
+	public void clear() {//Reset de la pila
 		int size = gonda.length;
-		/*if (size < 1) EN QUE COJONES PENSABAS CON ESTO?
-			size = 10;*/
 		gonda = new int[size];
                 empty=true;
 		bot = top = 0;
 	}
 	
 
-	private int inc(int n) {
+	private int inc(int n) { //Función interna para push y pop
 		int size = gonda.length;
 		return (n+1)%size;
 	}
 	
-	private int dec(int n) {
+	private int dec(int n) { //Función interna para push y pop
 		int size = gonda.length;
                 if(n==0)return size-1;
 		else
-                    return (n-1); //Tengo mis dudas ESTO ERA UNA MIERDA
+                    return (n-1);
 	}
 	
 	private int gonda[];

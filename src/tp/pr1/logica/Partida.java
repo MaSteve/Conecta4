@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package tp.pr1.logica;
 import tp.pr1.logica.utilidades.CircularUnsignedIntStack;
 
@@ -12,13 +6,16 @@ import tp.pr1.logica.utilidades.CircularUnsignedIntStack;
  * @author marcoantonio
  */
 public class Partida {
-    
+    /*
+     * Clase Partida. Maneja un tablero de fichas y tiene las funcionalidades
+     * básicas de la práctica
+     */
     public Partida()
     {
         reset();
     }
     public boolean ejecutaMovimiento(Ficha color, int col)
-    {
+    {   //Intenta ejecutar un movimiento y comunica al controlador si hay éxito
         if(col<=0||col>ANCHO)return false;
         if(!(tablero.getCasilla(col, 1).equals(Ficha.VACIA))||
                 !color.equals(turno)||terminada)
@@ -40,9 +37,9 @@ public class Partida {
             }
             lastx=col;
             lasty=i-1;
-            tablero.setCasilla(col, i-1, color);
-            stack.push(col);
-            turno=turno.contrario();
+            tablero.setCasilla(col, i-1, color);//Tras localizar la posición coloca la ficha
+            stack.push(col);//Almacena el movimiento
+            turno=turno.contrario();//Cambia el turno
             return true;
         }
     }
@@ -59,7 +56,7 @@ public class Partida {
         return turno;
     }
     public boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry)
-    {
+    {//No se usa esta función
         int x=posx+incrx;
         int y=posy+incry;
         int cont=1;
@@ -100,7 +97,7 @@ public class Partida {
         return false;
     }
     public boolean isTerminada()
-    {
+    {//Determina si la partida ha terminado. Se ejecuta en el controlador.
         if(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)return false;
         boolean stop=false;
         Ficha color=tablero.getCasilla(lastx, lasty);
@@ -260,7 +257,7 @@ public class Partida {
         ganador=Ficha.VACIA;
     }
     public boolean undo()
-    {
+    {//Función deshacer. Llama a la pila para obtener la última columna usada
         int col=stack.pop();
         if(col<1||col>ANCHO) return false;
         else
@@ -277,17 +274,17 @@ public class Partida {
                 }
             }
             if(stop){
-            tablero.setCasilla(col, i, Ficha.VACIA);
-            turno=turno.contrario();
+            tablero.setCasilla(col, i, Ficha.VACIA); //Se pone vacio
+            turno=turno.contrario();//Cambia el turno
             lastx=0;
-            lasty=0; //Ñapa para que funcione isTerminada() XD
+            lasty=0; //Se ponen a cero para evitar problemas
             return true;}
             else return false;//Otra ñapa de mierda
         }
     }
     
-    private int lastx;//Pueden desaparecer en futuras revisiones
-    private int lasty;
+    private int lastx;//Permiten agilizar la función isTerminada()
+    private int lasty;//Es la posición del último movimiento
     
     private CircularUnsignedIntStack stack;
     private Tablero tablero; 

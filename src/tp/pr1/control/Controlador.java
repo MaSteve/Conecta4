@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package tp.pr1.control;
 
 import java.util.Scanner;
@@ -14,7 +8,9 @@ import tp.pr1.logica.*;
  * @author marcoantonio
  */
 public class Controlador {
-    
+    /*
+     *Clase controlador. Maneja la partida.
+     */
     public Controlador(Partida p, Scanner in)
     {
         partida=p;
@@ -36,7 +32,7 @@ public class Controlador {
             }
             System.out.print("Qué quieres hacer? ");
             String comando=input.nextLine();
-            switch(comando)
+            switch(comando) //Opciones del jugador
             {
                 case "poner":
                 {
@@ -66,7 +62,7 @@ public class Controlador {
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
         }
         if(!stop)
-        {
+        {   //Partida terminada sin salirse
             color=partida.getGanador();
             switch(color)
             {
