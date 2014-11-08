@@ -40,7 +40,6 @@ public class Partida {
             tablero.setCasilla(col, i-1, color);//Tras localizar la posición coloca la ficha
             stack.push(col);//Almacena el movimiento
             turno=turno.contrario();//Cambia el turno
-            isEnded(); //Actualiza la bandera de fin de partida
             return true;
         }
     }
@@ -57,12 +56,12 @@ public class Partida {
         return turno;
     }
     public boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry)
-    {//En esta versión se usa este método
+    {//No se usa esta función
         int x=posx+incrx;
         int y=posy+incry;
         int cont=1;
         boolean stop=false;
-        while(!stop && x<=ANCHO && y<=ALTO && x>=1 && y>=1)
+        while(!stop && x<=ANCHO && y<=ALTO)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
@@ -71,7 +70,6 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    terminada=true;
                     ganador=turno.contrario();
                     return true;
                 }
@@ -81,7 +79,7 @@ public class Partida {
         x=posx-incrx;
         y=posy-incry;
         stop=false;
-        while(!stop && x<=ANCHO && y<=ALTO && x>=1 && y>=1)
+        while(!stop && x>=1 && y>=1)
         {
             if(tablero.getCasilla(x, y).equals(color))
             {
@@ -90,7 +88,6 @@ public class Partida {
                 cont++;
                 if(cont==4)
                 {
-                    terminada=true;
                     ganador=turno.contrario();
                     return true;
                 }
@@ -100,22 +97,149 @@ public class Partida {
         return false;
     }
     public boolean isTerminada()
-    {
-        return terminada;
-    }
-    public void isEnded()
     {//Determina si la partida ha terminado. Se ejecuta en el controlador.
-        if(!(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)){
+        if(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)return false;
+        boolean stop=false;
         Ficha color=tablero.getCasilla(lastx, lasty);
         ////EJE X
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 0)){
+        //cuatroEnRaya(color, lastx, lasty, 1, 0);
+        int x=lastx+1, y=lasty, cont=1;
+        while(!stop && x<=ANCHO)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x++;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        x=lastx-1;
+        stop=false;
+        while(!stop && x>=1)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x--;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
         ////EJE Y
-        if(!cuatroEnRaya(color, lastx, lasty, 0, 1)){
+        //cuatroEnRaya(color, lastx, lasty, 0, 1);
+        x=lastx;
+        y=lasty+1;
+        cont=1;
+        stop=false;
+        while(!stop && y<=ALTO)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                y++;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
         ////DIAGONAL 1
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 1)){
+        //cuatroEnRaya(color, lastx, lasty, 1, 1);
+        x=lastx+1;
+        y=lasty+1;
+        cont=1;
+        stop=false;
+        while(!stop && x<=ANCHO && y<=ALTO)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x++;
+                y++;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        x=lastx-1;
+        y=lasty-1;
+        stop=false;
+        while(!stop && x>=1 && y>=1)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x--;
+                y--;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
         ////DIAGONAL 2
-        if(!cuatroEnRaya(color, lastx, lasty, 1, -1)){
-        ////Tablas
+        //cuatroEnRaya(color, lastx, lasty, 1, -1);
+        x=lastx+1;
+        y=lasty-1;
+        cont=1;
+        stop=false;
+        while(!stop && x<=ANCHO && y>=1)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x++;
+                y--;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        x=lastx-1;
+        y=lasty+1;
+        stop=false;
+        while(!stop && x>=1 && y<=ALTO)
+        {
+            if(tablero.getCasilla(x, y).equals(color))
+            {
+                x--;
+                y++;
+                cont++;
+                if(cont==4)
+                {
+                    ganador=turno.contrario();
+                    terminada=true;
+                    return true;
+                }
+            }
+            else stop=true;
+        }
+        ////
         boolean end=true;
         int i=1; 
         while(end && i<=ANCHO)
@@ -124,7 +248,7 @@ public class Partida {
             i++;
         }
         terminada=end;
-        }}}}}
+        return end;
     }
     public void reset()//Es en sí el constructor de la Partida
     {
