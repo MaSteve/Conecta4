@@ -46,12 +46,12 @@ public class Controlador {
                 }break;
                 case "deshacer":
                 {
-                    if(!partida.undo())System.err.println("Imposible deshacer");
+                    if(!partida.undo())System.err.println("Imposible deshacer.");
                 }break;
                 case "reiniciar":
                 {
                     partida.reset();
-                    System.out.println("Partida reiniciada");
+                    System.out.println("Partida reiniciada.");
                 }break;
                 case "salir":
                 {
