@@ -1,7 +1,8 @@
-package tp.pr1.control;
+package tp.pr2.control;
 
+import tp.pr2.logica.Ficha;
+import tp.pr2.logica.Partida;
 import java.util.Scanner;
-import tp.pr1.logica.*;
 
 /**
  *

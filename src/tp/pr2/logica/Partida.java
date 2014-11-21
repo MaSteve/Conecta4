@@ -1,5 +1,5 @@
-package tp.pr1.logica;
-import tp.pr1.logica.utilidades.CircularUnsignedIntStack;
+package tp.pr2.logica;
+import tp.pr2.logica.utilidades.CircularUnsignedIntStack;
 
 /**
  *

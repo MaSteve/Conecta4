@@ -1,4 +1,4 @@
-package tp.pr1.logica.utilidades;
+package tp.pr2.logica.utilidades;
 /**
  *
  * @author ivan
