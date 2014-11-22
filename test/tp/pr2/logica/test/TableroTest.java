@@ -1,12 +1,12 @@
-package tp.pr1.logica.test;
+package tp.pr2.logica.test;
 
 import org.junit.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import tp.pr1.logica.Tablero;
-import tp.pr1.logica.Ficha;
+import tp.pr2.logica.Tablero;
+import tp.pr2.logica.Ficha;
 
 public class TableroTest {
 	

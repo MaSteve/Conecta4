@@ -1,4 +1,4 @@
-package tp.pr1.logica.test;
+package tp.pr2.logica.test;
 
 import org.junit.*;
 import static org.junit.Assert.assertEquals;
@@ -6,15 +6,17 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import tp.pr1.logica.Partida;
-import tp.pr1.logica.Tablero;
-import tp.pr1.logica.Ficha;
+import tp.pr2.logica.Partida;
+import tp.pr2.logica.Tablero;
+import tp.pr2.logica.Ficha;
+import tp.pr2.logica.MovimientoConecta4;
+import tp.pr2.logica.ReglasConecta4;
 
 public class CuatroEnRayaTest {
 
 	
 	private void testCuatroEnRaya(int posX[], int posY[], int ultima, Ficha color) {
-		Partida p = new Partida();
+		Partida p = new Partida(new ReglasConecta4());
 		Tablero t = p.getTablero();
 		for (int i = 0; i < posX.length; ++i)
 			if (i != ultima)
@@ -26,15 +28,15 @@ public class CuatroEnRayaTest {
 				"Partida terminada de forma anticipada con un tablero con tres fichas de color " + color,
 				p.isTerminada()
 				);
-		assertTrue(p.ejecutaMovimiento(color, posX[ultima]));
+		assertTrue(p.ejecutaMovimiento(new MovimientoConecta4(posX[ultima],color)));
 
 		assertTrue("Partida no terminada tras cuatro en raya de " + color,
 				p.isTerminada());
 		assertEquals("Ganador incorrecto tras victoria de " + color, color, p.getGanador());
 		
 		for (int x = 1; x <= 7; ++x) {
-			assertFalse("No se debe poder poner tras terminar la partida.", p.ejecutaMovimiento(Ficha.BLANCA, x));
-			assertFalse("No se debe poder poner tras terminar la partida.", p.ejecutaMovimiento(Ficha.NEGRA, x));
+			assertFalse("No se debe poder poner tras terminar la partida.", p.ejecutaMovimiento(new MovimientoConecta4(x,Ficha.BLANCA)));
+			assertFalse("No se debe poder poner tras terminar la partida.", p.ejecutaMovimiento(new MovimientoConecta4(x,Ficha.NEGRA)));
 		}
 		
 	}

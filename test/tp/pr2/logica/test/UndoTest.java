@@ -1,4 +1,4 @@
-package tp.pr1.logica.test;
+package tp.pr2.logica.test;
 
 import org.junit.*;
 
@@ -6,8 +6,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import tp.pr1.logica.Partida;
-import tp.pr1.logica.Ficha;
+import tp.pr2.logica.Partida;
+import tp.pr2.logica.Ficha;
+import tp.pr2.logica.MovimientoConecta4;
+import tp.pr2.logica.ReglasConecta4;
 
 public class UndoTest {
 	
@@ -15,12 +17,12 @@ public class UndoTest {
 	
 	@Before
 	public void init() {
-		p = new Partida();
+		p = new Partida(new ReglasConecta4());
 	}
 	
 	@Test
 	public void testUndoTrasMovimiento() {
-		p.ejecutaMovimiento(Ficha.BLANCA, 1);
+		p.ejecutaMovimiento(new MovimientoConecta4(1, Ficha.BLANCA));
 		assertTrue("Tras un movimiento, undo() debería funcionar", p.undo());
 		assertTrue("Al hacer undo tras un movimiento, el tablero debe quedar vacío.", UtilsPartidaYTablero.tableroVacio(p.getTablero()));
 		assertEquals("Al hacer undo tras un movimiento, debe ser turno de las blancas.", Ficha.BLANCA, p.getTurno());
@@ -31,7 +33,7 @@ public class UndoTest {
 	public void testUndo10Veces() {		
 		for (int i = 1; i <= 3; ++i)
 			for (int x = 1; x <= 7; ++x) {
-				p.ejecutaMovimiento(p.getTurno(), x);
+				p.ejecutaMovimiento(new MovimientoConecta4(x, p.getTurno()));
 				assertFalse(p.isTerminada());
 			}
 		
@@ -54,7 +56,7 @@ public class UndoTest {
 	
 	@Test
 	public void testNoUndoTrasReset() {
-		assertTrue(p.ejecutaMovimiento(p.getTurno(), 3));
+		assertTrue(p.ejecutaMovimiento(new MovimientoConecta4(3, p.getTurno())));
 		p.reset();
 		assertFalse("Tras reset, undo() no debe funcionar.", p.undo());
 	}

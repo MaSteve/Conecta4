@@ -1,8 +1,9 @@
-package tp.pr1.logica.test;
+package tp.pr2.logica.test;
 
-import tp.pr1.logica.Ficha;
-import tp.pr1.logica.Partida;
-import tp.pr1.logica.Tablero;
+import tp.pr2.logica.Ficha;
+import tp.pr2.logica.MovimientoConecta4;
+import tp.pr2.logica.Partida;
+import tp.pr2.logica.Tablero;
 
 public class UtilsPartidaYTablero {
 
@@ -61,7 +62,7 @@ public class UtilsPartidaYTablero {
 			// turno
 			int aux = columnaAdecuada(t, p.getTurno(), x);
 			if (aux == 0) return false;
-			p.ejecutaMovimiento(p.getTurno(), aux);
+			p.ejecutaMovimiento(new MovimientoConecta4(aux, p.getTurno()));
 		}
 		
 		// Antes de poner, garantizamos que no hay huecos por
@@ -72,7 +73,7 @@ public class UtilsPartidaYTablero {
 		}
 		
 		while (aPoner > 1) {
-			p.ejecutaMovimiento(p.getTurno(), x);
+			p.ejecutaMovimiento(new MovimientoConecta4(x, p.getTurno()));
 			aPoner--;
 		}
 		return true;

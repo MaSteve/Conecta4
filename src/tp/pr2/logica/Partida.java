@@ -16,7 +16,7 @@ public class Partida {
     }
     public boolean ejecutaMovimiento(Movimiento mov)
     {   //Intenta ejecutar un movimiento y comunica al controlador si hay éxito
-        if(terminada)return false;
+        if(terminada||!mov.getJugador().equals(turno))return false;
         boolean ok=mov.ejecutaMovimiento(tablero);
         if(ok)
         {
@@ -66,6 +66,7 @@ public class Partida {
         else
         {
             col.undo(tablero);
+            turno=turno.contrario();//No me gusta!!!
             return true;
         }
     }
