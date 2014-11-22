@@ -31,7 +31,7 @@ public class ReglasConecta4 implements ReglasJuego{
                 stop=true;
             }
         }
-        if(!isEnded(col,i, t))
+        if(!isEnded(col,i, t))//Igual se puede evitar
         {
             return Ficha.VACIA;
         }
@@ -118,7 +118,7 @@ public class ReglasConecta4 implements ReglasJuego{
     }
 
     @Override
-    public boolean tablas(Ficha ultimoEnPoner, Tablero t) {
+    public boolean tablas(Ficha ultimoEnPoner, Tablero t) {//No entiendo los parametros
         return tablas;
     }
     private Ficha ganador;

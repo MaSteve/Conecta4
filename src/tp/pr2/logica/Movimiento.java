@@ -10,7 +10,12 @@ package tp.pr2.logica;
  * @author marcoantonio
  */
 public abstract class Movimiento {
-    
+    public abstract boolean ejecutaMovimiento(Tablero tab);
+    public abstract void undo(Tablero tab);
+    public Ficha getJugador()
+    {
+        return color;
+    }
     public int getColumna()
     {
         return columna;
