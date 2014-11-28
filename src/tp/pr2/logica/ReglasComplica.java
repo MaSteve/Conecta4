@@ -9,37 +9,34 @@ package tp.pr2.logica;
  *
  * @author marcoantonio
  */
-public class ReglasConecta4 implements ReglasJuego{
-    //HAY QUE REFACTORIZAR CLASE INTERMEDIA YAAAA!!!!
-    public ReglasConecta4()
+public class ReglasComplica implements ReglasJuego{
+     //HAY QUE REFACTORIZAR CLASE INTERMEDIA YAAAA!!!!
+    public ReglasComplica()
     {
         
     }
+
     @Override
     public Ficha hayGanador(Movimiento ultimoMovimiento, Tablero t) {
-        ganador=Ficha.VACIA;
-        tablas=false;
-        int i=1;
         int col=ultimoMovimiento.getColumna();
+        Ficha provisional=Ficha.VACIA;
+        int i=1; 
         boolean stop=false;
         while(i<=ALTO && !stop)
         {
-            if(t.getCasilla(col, i).equals(Ficha.VACIA))
-                i++;
-            else
-            {
-                stop=true;
-            }
+            stop=isEnded(col, i, t);
+            i++;
         }
-        if(!isEnded(col,i, t))//Igual se puede evitar
+        provisional=ganador;
+        while(i<=ALTO)
         {
-            return Ficha.VACIA;
+            if(isEnded(col, i, t) && !provisional.equals(ganador)) return Ficha.VACIA;
+            i++;
         }
-        return ganador;
+        return provisional;
     }
     private boolean isEnded(int lastx, int lasty, Tablero t )
-    {//Determina si la partida ha terminado. Se ejecuta en el controlador.
-        boolean terminada=true;
+    {//Determina si la partida ha terminado en una posición.
         if(!(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)){
         Ficha color=t.getCasilla(lastx, lasty);
         ////EJE X
@@ -50,17 +47,11 @@ public class ReglasConecta4 implements ReglasJuego{
         if(!cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
         ////DIAGONAL 2
         if(!cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
-        ////Tablas
-        int i=1; 
-        while(terminada && i<=ANCHO)
-        {
-            terminada=!t.getCasilla(i, 1).equals(Ficha.VACIA);
-            i++;
-        }
-        if(terminada)tablas=true;
+            return false;
         }}}}}
-        return terminada;
+        return true;
     }
+    
     private boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry, Tablero t)
     {//En esta versión se usa este método
         int x=posx+incrx;
@@ -102,9 +93,10 @@ public class ReglasConecta4 implements ReglasJuego{
         }
         return false;
     }
+    
     @Override
     public Tablero iniciaTablero() {
-        return new Tablero(ANCHO, ALTO);
+        return new Tablero(ANCHO,ALTO);
     }
 
     @Override
@@ -118,11 +110,11 @@ public class ReglasConecta4 implements ReglasJuego{
     }
 
     @Override
-    public boolean tablas(Ficha ultimoEnPoner, Tablero t) {//No entiendo los parametros
-        return tablas;
+    public boolean tablas(Ficha ultimoEnPoner, Tablero t) {
+        return false;
     }
+    
     private Ficha ganador;
-    private boolean tablas;
-    private static final int ANCHO=7;
-    private static final int ALTO=6;
+    private static final int ANCHO=4;
+    private static final int ALTO=7;
 }

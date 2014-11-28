@@ -21,6 +21,6 @@ public abstract class Movimiento {
         return columna;
     }
     
-    protected int columna;
+    protected int columna;//Esto igual no le gusta!!!!
     protected Ficha color;
 }
