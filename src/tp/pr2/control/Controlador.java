@@ -3,6 +3,7 @@ package tp.pr2.control;
 import tp.pr2.logica.Ficha;
 import tp.pr2.logica.Partida;
 import java.util.Scanner;
+import tp.pr2.logica.MovimientoComplica;
 import tp.pr2.logica.MovimientoConecta4;
 
 /**
@@ -41,7 +42,7 @@ public class Controlador {
                     System.out.print("Introduce la columna: ");//Vamos a fiarnos del usuario
                     comando=input.nextLine();//No podemos usar try catch
                     int col=Integer.parseInt(comando);
-                    if(!partida.ejecutaMovimiento(new MovimientoConecta4(col, color)))//Hay que cambiarlo!!!!!
+                    if(!partida.ejecutaMovimiento(new MovimientoComplica(col, color)))//Hay que cambiarlo!!!!!
                     {
                         System.err.println("Movimiento incorrecto");
                     }

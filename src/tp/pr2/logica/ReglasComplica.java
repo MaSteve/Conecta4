@@ -27,7 +27,7 @@ public class ReglasComplica implements ReglasJuego{
             stop=isEnded(col, i, t);
             i++;
         }
-        provisional=ganador;
+        if(stop)provisional=ganador;
         while(i<=ALTO)
         {
             if(isEnded(col, i, t) && !provisional.equals(ganador)) return Ficha.VACIA;
@@ -39,6 +39,7 @@ public class ReglasComplica implements ReglasJuego{
     {//Determina si la partida ha terminado en una posición.
         if(!(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)){
         Ficha color=t.getCasilla(lastx, lasty);
+        if(color.equals(Ficha.VACIA))return false;
         ////EJE X
         if(!cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
         ////EJE Y

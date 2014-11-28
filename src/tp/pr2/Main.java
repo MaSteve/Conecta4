@@ -2,6 +2,7 @@ package tp.pr2;
 import tp.pr2.control.Controlador;
 import tp.pr2.logica.Partida;
 import java.util.Scanner;
+import tp.pr2.logica.ReglasComplica;
 import tp.pr2.logica.ReglasConecta4;
 /**
  *
@@ -13,7 +14,7 @@ public class Main {
      */
     public static void main(String [] arg)
     {   
-        Partida game=new Partida(new ReglasConecta4());
+        Partida game=new Partida(new ReglasComplica());
         Scanner input=new Scanner(System.in);
         Controlador control=new Controlador(game, input);
         control.run();

@@ -64,7 +64,7 @@ public class Tablero {
     }
     public Ficha getCasilla(int x, int y)
     {
-        if(x<1||y<1||x>ancho||y>ancho) return Ficha.VACIA;
+        if(x<1||y<1||x>ancho||y>alto) return Ficha.VACIA;
         else return tablero[x-1][y-1];
     }
     public void setCasilla(int x, int y, Ficha color)
