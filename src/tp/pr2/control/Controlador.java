@@ -3,8 +3,11 @@ package tp.pr2.control;
 import tp.pr2.logica.Ficha;
 import tp.pr2.logica.Partida;
 import java.util.Scanner;
+import tp.pr2.logica.Movimiento;
 import tp.pr2.logica.MovimientoComplica;
 import tp.pr2.logica.MovimientoConecta4;
+import tp.pr2.logica.ReglasComplica;
+import tp.pr2.logica.ReglasConecta4;
 
 /**
  *
@@ -42,7 +45,9 @@ public class Controlador {
                     System.out.print("Introduce la columna: ");//Vamos a fiarnos del usuario
                     comando=input.nextLine();//No podemos usar try catch
                     int col=Integer.parseInt(comando);
-                    if(!partida.ejecutaMovimiento(new MovimientoComplica(col, color)))//Hay que cambiarlo!!!!!
+                    Movimiento mov;
+                    mov=c4? new MovimientoComplica(col, color):new MovimientoConecta4(col, color);
+                    if(!partida.ejecutaMovimiento(mov))//Hay que cambiarlo!!!!!
                     {
                         System.err.println("Movimiento incorrecto");
                     }
@@ -60,6 +65,16 @@ public class Controlador {
                 {
                     stop=true;
                 }break;
+                case "jugar co":
+                {
+                    partida.reset(new ReglasComplica());
+                    c4=false;
+                }break;
+                case "jugar c4":
+                {
+                    partida.reset(new ReglasConecta4());
+                    c4=true;
+                }break;
                 default: System.err.println("No te entiendo.");
             } 
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
@@ -76,6 +91,7 @@ public class Controlador {
         }
         
     }
+    private boolean c4=true; //Ñapa
     private Partida partida;
     private Scanner input;
 }

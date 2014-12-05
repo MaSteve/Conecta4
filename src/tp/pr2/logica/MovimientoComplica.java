@@ -52,18 +52,7 @@ public class MovimientoComplica extends Movimiento {
     public void undo(Tablero tab) {
         if(columna>=1 && columna<=tab.getAncho())
         {
-            int i=1;
-            boolean stop=false;
-            while(i<=tab.getAlto() && !stop)
-            {
-                if(tab.getCasilla(columna, i).equals(Ficha.VACIA))
-                i++;
-                else
-                {
-                    stop=true;
-                }
-            }
-            if(i==1)
+            if(!quitada.equals(Ficha.VACIA))
             {
                 for(int j=1; j<tab.getAlto(); j++)
                 {
@@ -71,7 +60,21 @@ public class MovimientoComplica extends Movimiento {
                 }
                 tab.setCasilla(columna, tab.getAlto(), quitada);
             }
-            else if(stop) tab.setCasilla(columna, i, Ficha.VACIA); //Se pone vacio
+            else
+            {
+                int i=1;
+                boolean stop=false;
+                while(i<=tab.getAlto() && !stop)
+                {
+                    if(tab.getCasilla(columna, i).equals(Ficha.VACIA))
+                    i++;
+                    else
+                    {
+                        stop=true;
+                    }
+                }
+                if(stop)tab.setCasilla(columna, i, Ficha.VACIA); //Se pone vacio
+            }
         }
     }
     private Ficha quitada;

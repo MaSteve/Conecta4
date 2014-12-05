@@ -14,7 +14,7 @@ public class Main {
      */
     public static void main(String [] arg)
     {   
-        Partida game=new Partida(new ReglasComplica());
+        Partida game=new Partida(new ReglasConecta4());
         Scanner input=new Scanner(System.in);
         Controlador control=new Controlador(game, input);
         control.run();
