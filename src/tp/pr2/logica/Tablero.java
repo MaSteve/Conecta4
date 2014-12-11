@@ -69,7 +69,7 @@ public class Tablero {
     }
     public void setCasilla(int x, int y, Ficha color)
     {
-        tablero[x-1][y-1]=color;
+        if(x>=1&&y>=1&&x<=ancho&&y<=alto)tablero[x-1][y-1]=color;
     }
     private Ficha [ ][ ] tablero;
     private int ancho;
