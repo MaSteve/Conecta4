@@ -40,6 +40,12 @@ public class Partida {
     {
         return turno;
     }
+    
+    public Game getGame()
+    {
+        return reglas.getGame();
+    }
+    
     public boolean isTerminada()
     {
         return terminada;

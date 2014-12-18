@@ -121,6 +121,12 @@ public class ReglasConecta4 implements ReglasJuego{
     public boolean tablas(Ficha ultimoEnPoner, Tablero t) {//No entiendo los parametros
         return tablas;
     }
+    
+    @Override
+    public Game getGame() {
+        return Game.C4;
+    }
+    
     private Ficha ganador;
     private boolean tablas;
     private static final int ANCHO=7;

@@ -12,7 +12,7 @@ public class CircularUnsignedIntStack {
      * Es circular
      */
 	public CircularUnsignedIntStack() {
-		gonda = new Movimiento[10];
+		gonda = new Movimiento[11]; //Cambio provisional
                 empty=true;
                 bot = top = 0;//Por defecto 10 mov
 	}	

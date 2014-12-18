@@ -115,6 +115,11 @@ public class ReglasComplica implements ReglasJuego{
         return false;
     }
     
+    @Override
+    public Game getGame() {
+        return Game.CO;
+    }
+    
     private Ficha ganador;
     private static final int ANCHO=4;
     private static final int ALTO=7;

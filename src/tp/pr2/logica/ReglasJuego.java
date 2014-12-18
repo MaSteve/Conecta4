@@ -15,4 +15,5 @@ public interface ReglasJuego {
     public Ficha jugadorInicial();
     public Ficha siguienteTurno(Ficha ultimoEnPoner, Tablero t);
     public boolean tablas(Ficha ultimoEnPoner, Tablero t);
+    public Game getGame();
 }
