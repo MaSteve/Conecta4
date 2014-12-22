@@ -14,7 +14,7 @@ public class OrdenParser {
     public OrdenParser()
     {
         ordenes=new Orden[]{new OrdenDeshacer(),new OrdenJugarC4(),new OrdenJugarCo(),
-                new OrdenPoner(),new OrdenReiniciar(), new OrdenSalir()};
+                new OrdenPoner(),new OrdenReiniciar(), new OrdenSalir(), new OrdenJugarGr()};
     }
     
     public Orden Parser(String orden)

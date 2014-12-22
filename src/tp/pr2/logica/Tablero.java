@@ -71,6 +71,12 @@ public class Tablero {
     {
         if(x>=1&&y>=1&&x<=ancho&&y<=alto)tablero[x-1][y-1]=color;
     }
+    
+    public boolean enLimites(int x, int y)
+    {
+        return x>=1&&y>=1&&x<=ancho&&y<=alto;
+    }
+    
     private Ficha [ ][ ] tablero;
     private int ancho;
     private int alto;

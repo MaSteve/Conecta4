@@ -21,6 +21,12 @@ public abstract class Movimiento {
         return columna;
     }
     
+    public int getFila()//Ojo a ver quien lo usa
+    {
+        return fila;
+    }
+    
     protected int columna;//Esto igual no le gusta!!!!
+    protected int fila;
     protected Ficha color;
 }

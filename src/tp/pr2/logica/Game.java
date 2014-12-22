@@ -10,5 +10,5 @@ package tp.pr2.logica;
  * @author marcoantonio
  */
 public enum Game {
-    C4, CO;
+    C4, CO, GR;
 }
