@@ -1,5 +1,6 @@
 package tp.pr2.control;
 
+import java.util.HashMap;
 import tp.pr2.logica.Ficha;
 import tp.pr2.logica.Partida;
 import java.util.Scanner;
@@ -8,15 +9,35 @@ import java.util.Scanner;
  *
  * @author marcoantonio
  */
-public class Controlador {
+public final class Controlador {
     /*
      *Clase controlador. Maneja la partida.
      */
-    public Controlador(Partida p, Scanner in)
+    public Controlador(FactoriaTipoJuego f, Partida p, Scanner in)
     {
         partida=p;
         input=in;
         parser=new OrdenParser();
+        setFactoria(f);
+    }
+    public FactoriaTipoJuego getFactoria()
+    {
+        return factoria;
+    }
+    public void setFactoria(FactoriaTipoJuego factoria)
+    {
+        this.factoria=factoria;
+        jugadores=new HashMap<>();
+        jugadores.put(Ficha.BLANCA, factoria.creaJugadorHumanoConsola(input));
+        jugadores.put(Ficha.NEGRA, factoria.creaJugadorHumanoConsola(input));
+    }
+    public Jugador getJugador()
+    {
+        return jugadores.get(partida.getTurno());
+    }
+    public Partida getPartida()
+    {
+        return partida;
     }
     public void exitRequest()
     {
@@ -59,6 +80,8 @@ public class Controlador {
     }
     
     private boolean stop;
+    private FactoriaTipoJuego factoria;
+    private HashMap<Ficha,Jugador> jugadores;
     private Partida partida;
     private Scanner input;
     private OrdenParser parser;

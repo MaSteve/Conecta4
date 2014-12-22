@@ -10,7 +10,7 @@ package tp.pr2.logica;
  * @author marcoantonio
  */
 public abstract class Movimiento {
-    public abstract boolean ejecutaMovimiento(Tablero tab);
+    public abstract void ejecutaMovimiento(Tablero tab) throws MovimientoInvalido;
     public abstract void undo(Tablero tab);
     public Ficha getJugador()
     {

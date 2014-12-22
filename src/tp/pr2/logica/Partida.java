@@ -14,19 +14,19 @@ public class Partida {
     {
         reset(reglas);
     }
-    public boolean ejecutaMovimiento(Movimiento mov)
+    public void ejecutaMovimiento(Movimiento mov) throws MovimientoInvalido
     {   //Intenta ejecutar un movimiento y comunica al controlador si hay éxito
-        if(terminada||!mov.getJugador().equals(turno))return false;
-        boolean ok=mov.ejecutaMovimiento(tablero);
-        if(ok)
+        if(terminada||!mov.getJugador().equals(turno))
         {
-            stack.push(mov);//Almacena el movimiento
-            turno=reglas.siguienteTurno(turno, tablero);//Cambia el turno
-            ganador=reglas.hayGanador(mov, tablero);
-            if(!ganador.equals(Ficha.VACIA))terminada=true;
-            else terminada=reglas.tablas(turno, tablero);
+            throw new MovimientoInvalido();
         }
-        return ok;
+        mov.ejecutaMovimiento(tablero);//Puede lanzar una excepción
+        stack.push(mov);//Almacena el movimiento
+        turno=reglas.siguienteTurno(turno, tablero);//Cambia el turno
+        ganador=reglas.hayGanador(mov, tablero);
+        if(!ganador.equals(Ficha.VACIA))terminada=true;
+        else terminada=reglas.tablas(turno, tablero);
+        //return ok;
     }
     public Ficha getGanador()
     {

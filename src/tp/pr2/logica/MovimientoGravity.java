@@ -11,21 +11,31 @@ package tp.pr2.logica;
  */
 public class MovimientoGravity extends Movimiento{
 
-    public MovimientoGravity(int columna, int fila, Ficha color, Tablero tab)
+    public MovimientoGravity(int columna, int fila, Ficha color)//, Tablero tab)
     {
-        posDef(columna, fila, tab);
+        this.columna=columna;
+        this.fila=fila;
+        //posDef(columna, fila, tab);
         this.color=color;
     }
     @Override
-    public boolean ejecutaMovimiento(Tablero tab) {
-        if(!tab.enLimites(columna, fila)||!tab.getCasilla(columna, fila).equals(Ficha.VACIA))return false;
+    public void ejecutaMovimiento(Tablero tab) throws MovimientoInvalido {
+        posDef(columna, fila, tab);
+        if(!tab.enLimites(columna, fila))
+        {
+            throw new MovimientoInvalido("Posición incorrecta.");
+        }
+        else if(!tab.getCasilla(columna, fila).equals(Ficha.VACIA))
+        {
+            throw new MovimientoInvalido("Casilla ocupada.");
+        }
         else tab.setCasilla(columna, fila, color);
-        return true;
+        //return true;
     }
     private void posDef(int posx, int posy, Tablero tab)
     {
-        columna=posx;
-        fila=posy;
+        //columna=posx;
+        //fila=posy;
         if(tab.getCasilla(posx, posy).equals(Ficha.VACIA))
         {
             int[] grav=Gravedad(tab);

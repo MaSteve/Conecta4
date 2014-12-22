@@ -18,8 +18,11 @@ public class MovimientoComplica extends Movimiento {
     }
     
     @Override
-    public boolean ejecutaMovimiento(Tablero tab) {
-        if(columna<=0||columna>tab.getAncho())return false;
+    public void ejecutaMovimiento(Tablero tab) throws MovimientoInvalido {
+        if(columna<=0||columna>tab.getAncho())
+        {
+            throw new MovimientoInvalido("Columna incorrecta. Debe estar entre 1 y "+tab.getAncho()+".");    
+        }
         if(!(tab.getCasilla(columna, 1).equals(Ficha.VACIA)))
         {
             quitada=tab.getCasilla(columna, tab.getAlto());
@@ -45,7 +48,7 @@ public class MovimientoComplica extends Movimiento {
             }
             tab.setCasilla(columna, i-1, color);//Tras localizar la posición coloca la ficha
         }
-        return true;
+        //return true;
     }
 
     @Override

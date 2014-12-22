@@ -17,11 +17,14 @@ public class MovimientoConecta4 extends Movimiento {
         this.color=color;
     }
     @Override
-    public boolean ejecutaMovimiento(Tablero tab) {
-        if(columna<=0||columna>tab.getAncho())return false;
+    public void ejecutaMovimiento(Tablero tab) throws MovimientoInvalido {
+        if(columna<=0||columna>tab.getAncho())
+        {
+            throw new MovimientoInvalido("Columna incorrecta. Debe estar entre 1 y "+tab.getAncho()+".");
+        }
         if(!(tab.getCasilla(columna, 1).equals(Ficha.VACIA)))
         {
-            return false;
+            throw new MovimientoInvalido("Columna llena.");
         }
         else
         {
@@ -37,7 +40,7 @@ public class MovimientoConecta4 extends Movimiento {
                 }
             }
             tab.setCasilla(columna, i-1, color);//Tras localizar la posición coloca la ficha
-            return true;
+            //return true;
         }
     }
 

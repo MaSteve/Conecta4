@@ -7,7 +7,6 @@ package tp.pr2.control;
 
 import java.util.Scanner;
 import tp.pr2.logica.Partida;
-import tp.pr2.logica.ReglasConecta4;
 
 /**
  *
@@ -17,7 +16,8 @@ public class OrdenJugarC4 extends Orden{
 
     @Override
     public void ejecuta(Partida partida, Scanner input, Controlador control) {
-        partida.reset(new ReglasConecta4());
+        control.setFactoria(new FactoriaConecta4());
+        partida.reset(control.getFactoria().creaReglas());
         System.out.println("Partida reiniciada.");
     }
 
