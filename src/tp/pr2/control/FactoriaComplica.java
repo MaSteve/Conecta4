@@ -21,7 +21,7 @@ public class FactoriaComplica implements FactoriaTipoJuego {
 
     @Override
     public Jugador creaJugadorAleatorio() {
-       return new JugadorAleatorioConecta4(); 
+       return new JugadorAleatorioComplica(); 
     }
 
     @Override

@@ -19,9 +19,18 @@ import tp.pr2.logica.ReglasJuego;
  */
 public class FactoriaGravity implements FactoriaTipoJuego {
 
+    public FactoriaGravity()
+    {
+        tamx=tamy=0;
+    }
+    public FactoriaGravity(int tamx, int tamy)
+    {
+        this.tamx=tamx;
+        this.tamy=tamy;
+    }
     @Override
     public Jugador creaJugadorAleatorio() {
-       return new JugadorAleatorioConecta4(); 
+       return new JugadorAleatorioGravity(); 
     }
 
     @Override
@@ -36,7 +45,8 @@ public class FactoriaGravity implements FactoriaTipoJuego {
 
     @Override
     public ReglasJuego creaReglas() {
-        return new ReglasGravity();//Modificar
+        if(tamx<=0||tamy<=0) return new ReglasGravity();//Modificar
+        else return new ReglasGravity(tamx, tamy);
     }
 
     @Override
@@ -49,5 +59,6 @@ public class FactoriaGravity implements FactoriaTipoJuego {
         return true;
     }
     
+    private int tamx, tamy;
     //private Tablero tab;//Modificar
 }

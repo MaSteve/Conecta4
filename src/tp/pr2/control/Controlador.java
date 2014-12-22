@@ -31,6 +31,10 @@ public final class Controlador {
         jugadores.put(Ficha.BLANCA, factoria.creaJugadorHumanoConsola(input));
         jugadores.put(Ficha.NEGRA, factoria.creaJugadorHumanoConsola(input));
     }
+    public void setJugador(Ficha color, Jugador jugador)
+    {
+        jugadores.put(color, jugador);
+    }
     public Jugador getJugador()
     {
         return jugadores.get(partida.getTurno());
