@@ -13,6 +13,6 @@ import tp.pr2.logica.Partida;
  * @author marcoantonio
  */
 public abstract class Orden {
-    public abstract void ejecuta(Partida partida, Scanner input);
+    public abstract void ejecuta(Partida partida, Scanner input, Controlador control);
     public abstract Orden parsea(String ord);
 }

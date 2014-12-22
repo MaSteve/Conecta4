@@ -15,7 +15,7 @@ import tp.pr2.logica.Partida;
 public class OrdenReiniciar extends Orden{
 
     @Override
-    public void ejecuta(Partida partida, Scanner input) {
+    public void ejecuta(Partida partida, Scanner input, Controlador control) {
         partida.reset();
         System.out.println("Partida reiniciada.");
     }

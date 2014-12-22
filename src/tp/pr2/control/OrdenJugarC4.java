@@ -16,7 +16,7 @@ import tp.pr2.logica.ReglasConecta4;
 public class OrdenJugarC4 extends Orden{
 
     @Override
-    public void ejecuta(Partida partida, Scanner input) {
+    public void ejecuta(Partida partida, Scanner input, Controlador control) {
         partida.reset(new ReglasConecta4());
         System.out.println("Partida reiniciada.");
     }

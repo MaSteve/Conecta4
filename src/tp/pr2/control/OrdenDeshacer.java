@@ -15,7 +15,7 @@ import tp.pr2.logica.Partida;
 public class OrdenDeshacer extends Orden{
 
     @Override
-    public void ejecuta(Partida partida, Scanner input) {
+    public void ejecuta(Partida partida, Scanner input, Controlador control) {
         if(!partida.undo())System.err.println("Imposible deshacer.");
     }
 

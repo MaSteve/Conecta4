@@ -7,24 +7,22 @@ package tp.pr2.control;
 
 import java.util.Scanner;
 import tp.pr2.logica.Partida;
-import tp.pr2.logica.ReglasComplica;
 
 /**
  *
  * @author marcoantonio
  */
-public class OrdenJugarCo extends Orden {
+public class OrdenSalir extends Orden {
 
     @Override
     public void ejecuta(Partida partida, Scanner input, Controlador control) {
-        partida.reset(new ReglasComplica());
-        System.out.println("Partida reiniciada.");
+        control.exitRequest();
     }
 
     @Override
     public Orden parsea(String ord) {
-        if(ord.equals("jugar co")) return this;
-        else return null;    
+        if(ord.equals("salir")) return this;
+        else return null;
     }
     
 }

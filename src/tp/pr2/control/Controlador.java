@@ -18,10 +18,14 @@ public class Controlador {
         input=in;
         parser=new OrdenParser();
     }
+    public void exitRequest()
+    {
+        stop=true;
+    }
     public void run()
     {
         Ficha color;
-        boolean stop=false;
+        stop=false;
         System.out.print(partida.getTablero().toString()+"\n");
         while(!stop && !partida.isTerminada())
         {
@@ -34,16 +38,11 @@ public class Controlador {
             }
             System.out.print("Qué quieres hacer? ");
             String comando=input.nextLine();
-            //comando=comando.replace(" ", "");
+            //comando=comando.replace(" ", ""); o trim
             comando=comando.toLowerCase();
-            if(comando.equals("salir"))
-            {
-                stop=true;
-            }
-            else
-            {
-                parser.Parser(comando, partida, input);
-            }
+            Orden ord=parser.Parser(comando);
+            if(ord==null)System.err.println("No te entiendo.");
+            else ord.ejecuta(partida, input, this);
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
         }
         if(!stop)
@@ -59,6 +58,7 @@ public class Controlador {
         
     }
     
+    private boolean stop;
     private Partida partida;
     private Scanner input;
     private OrdenParser parser;

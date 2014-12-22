@@ -5,9 +5,6 @@
  */
 package tp.pr2.control;
 
-import java.util.Scanner;
-import tp.pr2.logica.Partida;
-
 /**
  *
  * @author marcoantonio
@@ -16,20 +13,20 @@ public class OrdenParser {
     
     public OrdenParser()
     {
-        ordenes=new Orden[]{new OrdenDeshacer(),new OrdenJugarC4(),new OrdenJugarCo(),new OrdenPoner(),new OrdenReiniciar()};
+        ordenes=new Orden[]{new OrdenDeshacer(),new OrdenJugarC4(),new OrdenJugarCo(),
+                new OrdenPoner(),new OrdenReiniciar(), new OrdenSalir()};
     }
     
-    public void Parser(String orden, Partida partida, Scanner input)
+    public Orden Parser(String orden)
     {
         for(Orden ord: ordenes)
         {
             if(ord.parsea(orden)!=null) 
             {
-                ord.ejecuta(partida, input);
-                return;
+                return ord;
             }
         }
-        System.err.println("No te entiendo.");
+        return null;
     }
     
     private Orden ordenes[];

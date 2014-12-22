@@ -20,9 +20,10 @@ import tp.pr2.logica.Partida;
 public class OrdenPoner extends Orden{
 
     @Override
-    public void ejecuta(Partida partida, Scanner input) {
+    public void ejecuta(Partida partida, Scanner input, Controlador control) {
         System.out.print("Introduce la columna: ");//Vamos a fiarnos del usuario
         String comando=input.nextLine();//No podemos usar try catch
+        comando=comando.trim();
         int col=Integer.parseInt(comando);
         Movimiento mov;
         Ficha color=partida.getTurno();

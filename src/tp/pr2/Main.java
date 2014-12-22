@@ -2,7 +2,6 @@ package tp.pr2;
 import tp.pr2.control.Controlador;
 import tp.pr2.logica.Partida;
 import java.util.Scanner;
-import tp.pr2.logica.ReglasComplica;
 import tp.pr2.logica.ReglasConecta4;
 /**
  *
