@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp.pr3.control;
 
 /**
@@ -11,20 +6,15 @@ package tp.pr3.control;
  */
 public class OrdenParser { //ESTO TIENE QUE SER TODO ESTÁTICO!!!
     
-    /*public OrdenParser()
-    {
-        ordenes=new Orden[]{new OrdenPoner(), new OrdenDeshacer(), new OrdenReiniciar(),
-            new OrdenJugar(), new OrdenJugador(), new OrdenSalir(), new OrdenAyuda()};
-    }*/
-    
     public static Orden parser(String orden)
     {
         String[] order=orden.split("\\s+");
         for(Orden ord: ordenes)
         {
-            if(ord.parsea(order)!=null) 
+            Orden ret=ord.parsea(order);
+            if(ret!=null) 
             {
-                return ord;
+                return ret;
             }
         }
         return null;
@@ -42,6 +32,6 @@ public class OrdenParser { //ESTO TIENE QUE SER TODO ESTÁTICO!!!
         System.out.println(str.toString());
     }
     
-    private static Orden ordenes[] = new Orden[]{new OrdenPoner(), new OrdenDeshacer(), new OrdenReiniciar(),
+    private final static Orden ordenes[] = new Orden[]{new OrdenPoner(), new OrdenDeshacer(), new OrdenReiniciar(),
             new OrdenJugar(), new OrdenJugador(), new OrdenSalir(), new OrdenAyuda()};;
 }

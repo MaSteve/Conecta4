@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp.pr3.control;
 
 import java.util.Scanner;
@@ -39,8 +34,9 @@ public class OrdenJugador extends Orden {
     public Orden parsea(String[] ord) {
         if(ord[0].equals("jugador")) //Esto hay que pulirlo
         {
-            this.ord=ord;
-            return this;
+            OrdenJugador ret=new OrdenJugador();
+            ret.ord=ord;
+            return ret;
         }
         else return null;    
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp.pr3.control;
 
 import java.util.Scanner;
@@ -16,7 +11,10 @@ public class OrdenJugar extends Orden {
 
     @Override
     public void ejecuta(Partida partida, Scanner input, Controlador control) {
-        if(ord.length<2)return;
+        if(ord.length<2){
+            System.err.println("No te entiendo.");
+            return;
+        }
         switch(ord[1])
         {
             case "co":
@@ -40,15 +38,9 @@ public class OrdenJugar extends Orden {
                     }
                     control.setFactoria(new FactoriaGravity(tamx, tamy));
                     partida.reset(control.getFactoria().creaReglas());
+                    break;
                 }
-                else if(ord.length==2)
-                {
-                    control.setFactoria(new FactoriaGravity());
-                    partida.reset(control.getFactoria().creaReglas());
-                }
-                break;
-            default:System.err.println("No te entiendo.");return;
-                
+            default:System.err.println("No te entiendo.");return;    
         }
         System.out.println("Partida reiniciada.");
     }
@@ -57,16 +49,17 @@ public class OrdenJugar extends Orden {
     public Orden parsea(String[] ord) {
         if(ord[0].equals("jugar"))
         {
-            this.ord=ord;
-            return this;
+            OrdenJugar ret=new OrdenJugar();
+            ret.ord=ord;
+            return ret;
         }
         else return null;    
     }
-    private String[]ord;
 
     @Override
     public String getTextoAyuda() {
         return "JUGAR [c4|co|gr] [tamX tamY]: cambia el tipo de juego.";
     }
-    
+        
+    private String[]ord;
 }

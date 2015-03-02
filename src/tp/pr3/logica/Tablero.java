@@ -49,7 +49,7 @@ public class Tablero {
         board.append("+"+"\n"+" ");
         for(int i=0; i<ancho; i++)
         {
-            board.append(""+(i+1));
+            board.append(""+((i+1))%10);
         }
         board.append("\n");
         return board.toString();

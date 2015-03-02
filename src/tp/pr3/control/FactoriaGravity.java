@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tp.pr3.control;
 
 import java.util.Scanner;
@@ -45,7 +40,7 @@ public class FactoriaGravity implements FactoriaTipoJuego {
 
     @Override
     public ReglasJuego creaReglas() {
-        if(tamx<=0||tamy<=0) return new ReglasGravity();//Modificar
+        if(tamx<=0||tamy<=0) return new ReglasGravity(1,1);//Modificar
         else return new ReglasGravity(tamx, tamy);
     }
 
@@ -60,5 +55,4 @@ public class FactoriaGravity implements FactoriaTipoJuego {
     }
     
     private int tamx, tamy;
-    //private Tablero tab;//Modificar
 }
