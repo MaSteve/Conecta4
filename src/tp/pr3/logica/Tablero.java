@@ -25,6 +25,7 @@ public class Tablero {
             for(int j=0; j<alto;j++)
                 this.setCasilla(i+1, j+1, Ficha.VACIA);
     }
+    @Override
     public String toString()
     {
         StringBuilder board=new StringBuilder();
@@ -67,7 +68,7 @@ public class Tablero {
         if(x<1||y<1||x>ancho||y>alto) return Ficha.VACIA;
         else return tablero[x-1][y-1];
     }
-    public void setCasilla(int x, int y, Ficha color)
+    public final void setCasilla(int x, int y, Ficha color)
     {
         if(x>=1&&y>=1&&x<=ancho&&y<=alto)tablero[x-1][y-1]=color;
     }

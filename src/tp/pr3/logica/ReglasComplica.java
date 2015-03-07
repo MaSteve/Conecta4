@@ -1,5 +1,7 @@
 package tp.pr3.logica;
 
+import tp.pr2.logica.utilidades.Utils;
+
 /**
  *
  * @author marcoantonio
@@ -36,58 +38,18 @@ public class ReglasComplica implements ReglasJuego{
         Ficha color=t.getCasilla(lastx, lasty);
         if(color.equals(Ficha.VACIA))return false;
         ////EJE X
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
+        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
         ////EJE Y
-        if(!cuatroEnRaya(color, lastx, lasty, 0, 1, t)){
+        if(!Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t)){
         ////DIAGONAL 1
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
+        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
         ////DIAGONAL 2
-        if(!cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
+        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
             return false;
-        }}}}}
+        }}}}
+        ganador=color;
+        }
         return true;
-    }
-    
-    private boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry, Tablero t)
-    {//En esta versión se usa este método
-        int x=posx+incrx;
-        int y=posy+incry;
-        int cont=1;
-        boolean stop=false;
-        while(!stop && x<=ANCHO && y<=ALTO && x>=1 && y>=1)
-        {
-            if(t.getCasilla(x, y).equals(color))
-            {
-                x=x+incrx;
-                y=y+incry;
-                cont++;
-                if(cont==4)
-                {
-                    ganador=color;//Revisar
-                    return true;
-                }
-            }
-            else stop=true;
-        }
-        x=posx-incrx;
-        y=posy-incry;
-        stop=false;
-        while(!stop && x<=ANCHO && y<=ALTO && x>=1 && y>=1)
-        {
-            if(t.getCasilla(x, y).equals(color))
-            {
-                x=x-incrx;
-                y=y-incry;
-                cont++;
-                if(cont==4)
-                {
-                    ganador=color;
-                    return true;
-                }
-            }
-            else stop=true;
-        }
-        return false;
     }
     
     @Override

@@ -52,8 +52,6 @@ public class Partida {
     }
     public final void reset()
     {
-        //lastx=0;
-        //lasty=0;
         tablero=reglas.iniciaTablero();
         stack=new CircularUnsignedIntStack();
         turno=reglas.jugadorInicial();
@@ -76,16 +74,11 @@ public class Partida {
             return true;
         }
     }
-    
-    //private int lastx;//Permiten agilizar la función isTerminada()
-    //private int lasty;//Es la posición del último movimiento
-    
+        
     private ReglasJuego reglas;
     private CircularUnsignedIntStack stack;
     private Tablero tablero; 
     private Ficha turno; 
     private boolean terminada; 
     private Ficha ganador;
-    //private static final int ANCHO=7;
-    //private static final int ALTO=6;
 }
