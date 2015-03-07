@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp.pr2.logica.utilidades;
+package tp.pr3.logica.utilidades;
 
-import tp.pr2.logica.Ficha;
-import tp.pr2.logica.Tablero;
+import tp.pr3.logica.Ficha;
+import tp.pr3.logica.Tablero;
 
 /**
  *

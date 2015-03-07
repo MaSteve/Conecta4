@@ -1,6 +1,6 @@
 package tp.pr3.logica;
 
-import tp.pr2.logica.utilidades.Utils;
+import tp.pr3.logica.utilidades.Utils;
 
 /**
  *
@@ -38,25 +38,21 @@ public class ReglasConecta4 implements ReglasJuego{
     {//Determina si la partida ha terminado. Se ejecuta en el controlador.
         boolean terminada=true;
         if(!(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)){
-        Ficha color=t.getCasilla(lastx, lasty);
-        ////EJE X
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
-        ////EJE Y
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t)){
-        ////DIAGONAL 1
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
-        ////DIAGONAL 2
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
-        ////Tablas
-        int i=1; 
-        while(terminada && i<=ANCHO)
-        {
-            terminada=!t.getCasilla(i, 1).equals(Ficha.VACIA);
-            i++;
-        }
-        if(terminada)tablas=true;
-        }}}}
-        if(terminada && !tablas) ganador=color;
+            Ficha color=t.getCasilla(lastx, lasty);
+            if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t) && 
+                !Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t) &&
+                !Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t) &&
+                !Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
+                ////Tablas
+                int i=1; 
+                while(terminada && i<=ANCHO)
+                {
+                    terminada=!t.getCasilla(i, 1).equals(Ficha.VACIA);
+                    i++;
+                }
+                if(terminada)tablas=true;
+            }
+            if(terminada && !tablas) ganador=color;
         }
         return terminada;
     }

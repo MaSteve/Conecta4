@@ -1,5 +1,7 @@
 package tp.pr3.logica;
 
+import tp.pr3.logica.utilidades.Utils;
+
 /**
  *
  * @author marcoantonio
@@ -31,67 +33,24 @@ public class ReglasGravity implements ReglasJuego{
     {//Determina si la partida ha terminado. Se ejecuta en el controlador.
         boolean terminada=true;
         if(!(lastx<1||lastx>ancho||lasty<1||lasty>alto)){
-        Ficha color=t.getCasilla(lastx, lasty);
-        ////EJE X
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
-        ////EJE Y
-        if(!cuatroEnRaya(color, lastx, lasty, 0, 1, t)){
-        ////DIAGONAL 1
-        if(!cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
-        ////DIAGONAL 2
-        if(!cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
-        ////Tablas
-        for(int i=1; i<=ancho&&terminada; i++)
-        {
-            for(int j=1; j<=alto&&terminada; j++)
-            {
-                if(t.getCasilla(i, j).equals(Ficha.VACIA)) terminada=false;
+            Ficha color=t.getCasilla(lastx, lasty);
+            if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t) && 
+                    !Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t) &&
+                    !Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t) &&
+                    !Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
+                    ////Tablas
+                    for(int i=1; i<=ancho&&terminada; i++)
+                    {
+                        for(int j=1; j<=alto&&terminada; j++)
+                        {
+                            if(t.getCasilla(i, j).equals(Ficha.VACIA)) terminada=false;
+                        }
+                    }
+                    if(terminada)tablas=true;
             }
+            if(terminada && !tablas) ganador=color;
         }
-        if(terminada)tablas=true;
-        }}}}}
         return terminada;
-    }
-    private boolean cuatroEnRaya(Ficha color, int posx, int posy, int incrx, int incry, Tablero t)
-    {//En esta versión se usa este método
-        int x=posx+incrx;
-        int y=posy+incry;
-        int cont=1;
-        boolean stop=false;
-        while(!stop && x<=ancho && y<=alto && x>=1 && y>=1)
-        {
-            if(t.getCasilla(x, y).equals(color))
-            {
-                x=x+incrx;
-                y=y+incry;
-                cont++;
-                if(cont==4)
-                {
-                    ganador=color;//Revisar
-                    return true;
-                }
-            }
-            else stop=true;
-        }
-        x=posx-incrx;
-        y=posy-incry;
-        stop=false;
-        while(!stop && x<=ancho && y<=alto && x>=1 && y>=1)
-        {
-            if(t.getCasilla(x, y).equals(color))
-            {
-                x=x-incrx;
-                y=y-incry;
-                cont++;
-                if(cont==4)
-                {
-                    ganador=color;
-                    return true;
-                }
-            }
-            else stop=true;
-        }
-        return false;
     }
     
     @Override

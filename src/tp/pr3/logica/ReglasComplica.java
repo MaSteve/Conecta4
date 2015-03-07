@@ -1,6 +1,6 @@
 package tp.pr3.logica;
 
-import tp.pr2.logica.utilidades.Utils;
+import tp.pr3.logica.utilidades.Utils;
 
 /**
  *
@@ -35,19 +35,15 @@ public class ReglasComplica implements ReglasJuego{
     private boolean isEnded(int lastx, int lasty, Tablero t )
     {//Determina si la partida ha terminado en una posición.
         if(!(lastx<1||lastx>ANCHO||lasty<1||lasty>ALTO)){
-        Ficha color=t.getCasilla(lastx, lasty);
-        if(color.equals(Ficha.VACIA))return false;
-        ////EJE X
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t)){
-        ////EJE Y
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t)){
-        ////DIAGONAL 1
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t)){
-        ////DIAGONAL 2
-        if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
-            return false;
-        }}}}
-        ganador=color;
+            Ficha color=t.getCasilla(lastx, lasty);
+            if(color.equals(Ficha.VACIA))return false;
+            if(!Utils.cuatroEnRaya(color, lastx, lasty, 1, 0, t) && 
+                !Utils.cuatroEnRaya(color, lastx, lasty, 0, 1, t) &&
+                !Utils.cuatroEnRaya(color, lastx, lasty, 1, 1, t) &&
+                !Utils.cuatroEnRaya(color, lastx, lasty, 1, -1, t)){
+                return false;
+            }
+            ganador=color;
         }
         return true;
     }
