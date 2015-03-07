@@ -21,14 +21,14 @@ public class JugadorHumano implements Jugador {
     public Movimiento getMovimiento(Tablero tab, Ficha color) throws MovimientoInvalido {
         int col=0, fila=0;
         try{
-            System.out.print("Introduce la columna: ");//Vamos a fiarnos del usuario
-            String comando=input.nextLine();//No podemos usar try catch
+            System.out.print("Introduce la columna: ");
+            String comando=input.nextLine();
             comando=comando.trim();
             col=Integer.parseInt(comando);
             if(fact.filasImportan())
             {
-                System.out.print("Introduce la fila: ");//Vamos a fiarnos del usuario
-                comando=input.nextLine();//No podemos usar try catch
+                System.out.print("Introduce la fila: ");
+                comando=input.nextLine();
                 comando=comando.trim();
                 fila=Integer.parseInt(comando);
             }

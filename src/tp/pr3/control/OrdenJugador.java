@@ -2,7 +2,6 @@ package tp.pr3.control;
 
 import java.util.Scanner;
 import tp.pr3.logica.Ficha;
-import tp.pr3.logica.Partida;
 
 /**
  *
@@ -10,7 +9,7 @@ import tp.pr3.logica.Partida;
  */
 public class OrdenJugador extends Orden {
     @Override
-    public void ejecuta(Partida partida, Scanner input, Controlador control) {
+    public void ejecuta(Scanner input, Controlador control) {
         if(ord.length==3)
         {
             Ficha color;

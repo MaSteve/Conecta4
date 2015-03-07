@@ -64,9 +64,9 @@ public final class Controlador {
             String comando=input.nextLine();
             //comando=comando.replace(" ", ""); o trim
             comando=comando.toLowerCase();
-            Orden ord=OrdenParser.parser(comando);//TODO: parser Tiene que devolver un boolean el ejecuta
+            Orden ord=OrdenParser.parser(comando);
             if(ord==null)System.err.println("No te entiendo.");
-            else ord.ejecuta(partida, input, this);
+            else ord.ejecuta(input, this);
             if(!stop) System.out.print(partida.getTablero().toString()+"\n");
         }
         if(!stop)

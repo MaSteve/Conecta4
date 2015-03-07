@@ -1,7 +1,6 @@
 package tp.pr3.control;
 
 import java.util.Scanner;
-import tp.pr3.logica.Partida;
 
 /**
  *
@@ -10,7 +9,7 @@ import tp.pr3.logica.Partida;
 public class OrdenJugar extends Orden {
 
     @Override
-    public void ejecuta(Partida partida, Scanner input, Controlador control) {
+    public void ejecuta(Scanner input, Controlador control) {
         if(ord.length<2){
             System.err.println("No te entiendo.");
             return;
@@ -19,10 +18,10 @@ public class OrdenJugar extends Orden {
         {
             case "co":
                 control.setFactoria(new FactoriaComplica());
-                partida.reset(control.getFactoria().creaReglas());break;
+                control.getPartida().reset(control.getFactoria().creaReglas());break;
             case "c4":
                 control.setFactoria(new FactoriaConecta4());
-                partida.reset(control.getFactoria().creaReglas());break;
+                control.getPartida().reset(control.getFactoria().creaReglas());break;
             case "gr":
                 if(ord.length==4)
                 {
@@ -37,7 +36,7 @@ public class OrdenJugar extends Orden {
                         System.err.println("No te entiendo.");return; //TODO
                     }
                     control.setFactoria(new FactoriaGravity(tamx, tamy));
-                    partida.reset(control.getFactoria().creaReglas());
+                    control.getPartida().reset(control.getFactoria().creaReglas());
                     break;
                 }
             default:System.err.println("No te entiendo.");return;    

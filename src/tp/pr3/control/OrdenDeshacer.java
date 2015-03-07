@@ -1,7 +1,6 @@
 package tp.pr3.control;
 
 import java.util.Scanner;
-import tp.pr3.logica.Partida;
 
 /**
  *
@@ -10,8 +9,8 @@ import tp.pr3.logica.Partida;
 public class OrdenDeshacer extends Orden{
 
     @Override
-    public void ejecuta(Partida partida, Scanner input, Controlador control) {
-        if(!partida.undo())System.err.println("Imposible deshacer.");
+    public void ejecuta(Scanner input, Controlador control) {
+        if(!control.getPartida().undo())System.err.println("Imposible deshacer.");
     }
 
     @Override

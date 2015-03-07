@@ -4,7 +4,7 @@ package tp.pr3.control;
  *
  * @author marcoantonio
  */
-public class OrdenParser { //ESTO TIENE QUE SER TODO ESTÁTICO!!!
+public class OrdenParser {
     
     public static Orden parser(String orden)
     {
